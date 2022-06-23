@@ -21,11 +21,11 @@
 
 // // Конструкция do...while создает цикл, который выполняет блок кода до тех пор, пока password.length не вернёт false.
 
-// let task = '';
+let task = '';
 
-// do {
-//   task = prompt('2+2=?', '');
-// } while (task === 4);
+do {
+  task = prompt('2+2=?', '');
+} while (task < 4 || task > 4);
 
-// console.log('Ввели пароль: ', task);
+console.log('Решение: ', task);
 // // Конструкция do...while создает цикл, который выполняет блок кода до тех пор, пока task не вернёт false.
