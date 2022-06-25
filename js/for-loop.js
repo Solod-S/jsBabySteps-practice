@@ -118,18 +118,18 @@
 
 //  еще лучше (логика от обратного)
 
-const min = 0;
-const max = 8;
-let total = 0;
+// const min = 0;
+// const max = 8;
+// let total = 0;
 
-for (let i = min; i <= max; i += 1) {
-  //  если это число делиться на 2 с остатком ( 3 / 2 ) с ним выполняем действие continue (пропуск этерации total = total + i)
-  if (i % 2 !== 0) {
-    console.log('Нечётное число', i);
-    continue;
-  }
-  //  выполняем для всех кроме тех которые в if
-  console.log('Чётное число', i);
-  total = total + i;
-}
-console.log(`Сумма всех чётных чисел в диапазонах от ${min} до ${max} = ${total}`);
+// for (let i = min; i <= max; i += 1) {
+//   //  если это число делиться на 2 с остатком ( 3 / 2 ) с ним выполняем действие continue (пропуск этерации total = total + i)
+//   if (i % 2 !== 0) {
+//     console.log('Нечётное число', i);
+//     continue;
+//   }
+//   //  выполняем для всех кроме тех которые в if
+//   console.log('Чётное число', i);
+//   total = total + i;
+// }
+// console.log(`Сумма всех чётных чисел в диапазонах от ${min} до ${max} = ${total}`);
