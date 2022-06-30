@@ -1,3 +1,5 @@
+// 'join-split-includes-chaining-slice-splice-concat-indexOf-for_of-термальный операто';
+
 // Перебираем масивы
 
 // const MyCollection = ['Ps4', 'Xbox', 'switch'];
@@ -520,13 +522,13 @@ const consoles = ['Xbox', 'PS4', 'PS5', 'Switch', 'Tetris'];
 // Третий, четвертый и все последующие аргументы - это новые элементы, которые добавляются в массив.
 // ---
 
-const replaceConsole = 'Atari';
-const indexConsole = 0;
-consoles.splice(indexConsole, 1, replaceConsole);
+// const replaceConsole = 'Atari';
+// const indexConsole = 0;
+// consoles.splice(indexConsole, 1, replaceConsole);
 
-console.table(consoles);
+// console.table(consoles);
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-const numbersForU = [1, 2, 3, 4, 5];
+// const numbersForU = [1, 2, 3, 4, 5];
 
 // высчитываем индекс удаляемого обьекта и передаем в скрипт который удаляет его
 // ---------------------------------------------------------------------
@@ -557,7 +559,7 @@ const numbersForU = [1, 2, 3, 4, 5];
 // num - определяет количество удаляемых элементов
 // Третий, четвертый и все последующие аргументы - это новые элементы, которые добавляются в массив.
 // ---
-const replaceNumber = 33;
-const indexNumber = 0;
-numbersForU.splice(indexNumber, 1, replaceNumber);
-console.table(numbersForU);
+// const replaceNumber = 33;
+// const indexNumber = 0;
+// numbersForU.splice(indexNumber, 1, replaceNumber);
+// console.table(numbersForU);
