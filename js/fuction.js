@@ -352,21 +352,21 @@
  *   для которых есть аналог в оригинальном массиве.
  */
 
-const filterNumbers = function (numbersOfBase, ...numbersWhichSearch) {
-  let result = [];
-  // console.log(numbersOfBase);
-  // console.log(numbersWhichSearch);
-  for (let numberWhichSearch of numbersWhichSearch) {
-    if (numbersOfBase.includes(numberWhichSearch)) {
-      result.push(numberWhichSearch);
-    }
-  }
-  return result;
-};
+// const filterNumbers = function (numbersOfBase, ...numbersWhichSearch) {
+//   let result = [];
+//   // console.log(numbersOfBase);
+//   // console.log(numbersWhichSearch);
+//   for (let numberWhichSearch of numbersWhichSearch) {
+//     if (numbersOfBase.includes(numberWhichSearch)) {
+//       result.push(numberWhichSearch);
+//     }
+//   }
+//   return result;
+// };
 
-console.log(filterNumbers([1, 2, 3, 4, 5], 10, 15, 2, 3, 8)); // [2, 3]
-console.log(filterNumbers([10, 15, 25, 30], 23, 30, 18, 15)); // [30, 15]
-console.log(filterNumbers([100, 200, 300, 400, 500], 7, 12, 200, 64)); // [200]
+// console.log(filterNumbers([1, 2, 3, 4, 5], 10, 15, 2, 3, 8)); // [2, 3]
+// console.log(filterNumbers([10, 15, 25, 30], 23, 30, 18, 15)); // [30, 15]
+// console.log(filterNumbers([100, 200, 300, 400, 500], 7, 12, 200, 64)); // [200]
 
 // const filterNumbers = function (array, ...args) {
 //   console.log('array: ', array);
@@ -383,3 +383,36 @@ console.log(filterNumbers([100, 200, 300, 400, 500], 7, 12, 200, 64)); // [200]
 
 //   return uniqueElements;
 // };
+
+// --------------------задача 9// --------------------задача 9// --------------------задача 9// --------------------задача 9// --------------------задача 9
+
+// Алгоритм;
+// 1 сделать переменную total до цикла
+// 2 перебрать массив в цикле
+// 3 сделать if в котором будем отбирать числа по принципу то что делиться на 2 с остатком по делению и пропускать операцию добавления в total ()
+// 4 отобразить total в логе
+
+// const funct = function (start, end) {
+//   let total = [];
+//   for (let i = start; i <= end; i += 1) {
+//     if (i % 2 === 0) {
+//       total.push(i);
+//     }
+//   }
+//   return console.log(total);
+// };
+
+// console.log(funct(6, 12));
+
+const includes = function (array, value) {
+  let result;
+  for (let item of array) {
+    console.log(item);
+    if (item === value) {
+      return true;
+    }
+  }
+  return false;
+};
+
+console.log(includes(['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn'], 'Jup22iter'));
