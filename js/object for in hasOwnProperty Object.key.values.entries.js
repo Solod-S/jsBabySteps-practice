@@ -356,31 +356,133 @@
 
 // // ------------------------------------------------------------------------------------ЗАДАЧА 4----------------------------------------------------------
 
-// /*
-//  * Работем с коллекцией товаров в корзине:
-//  * - getItems()
-//  * - add(product)
-//  * - remove(productName)
-//  * - clear()
-//  * - countTotalPrice()
-//  * - increaseQuantity(productName)
-//  * - decreaseQuantity(productName)
-//  *
-//  * { name: '🍎', price: 50 }
-//  * { name: '🍇', price: 70 }
-//  * { name: '🍋', price: 60 }
-//  * { name: '🍓', price: 110 }
-//  */
+/*
+ * Работем с коллекцией товаров в корзине:
+ * - getItems()
+ * - add(product)
+ * - remove(productName)
+ * - clear()
+ * - countTotalPrice()
+ * - increaseQuantity(productName)
+ * - decreaseQuantity(productName)
+ *
+ * { name: '🍎', price: 50 }
+ * { name: '🍇', price: 70 }
+ * { name: '🍋', price: 60 }
+ * { name: '🍓', price: 110 }
+ */
 
-// const cart = {
-//   items: [],
-//   getItems() {},
-//   add(product) {},
-//   remove(productName) {},
-//   clear() {},
-//   countTotalPrice() {},
-//   increaseQuantity(productName) {},
-//   decreaseQuantity(productName) {},
-// };
+const cart = {
+  items: [],
+  getItems() {
+    return this.items;
+  },
+  add(product) {
+    console.table(this.items);
+    for (const item of this.items) {
+      // перебираем по элементам (не пугаемся что в консоли происходит)
+      if (item.name === product.name) {
+        console.log('НАШЛИ СОВПАДЕНИЕ!!!', item.name);
+        item.quantity += 1; // по ссылке-item.quantity в оригинальном объекте-items.quantity  меняем значение
+        return; // дальше код не выполняем
+      }
+    }
+    const newProduct = {
+      ...product, // распыляем объект с ключами и свойствами
+      quantity: 1, // делаем новый ключ с свойством
+    };
+    this.items.push(newProduct);
+  },
+  remove(productName) {
+    const { items } = this; // чтобы избавиться от this.items
+    //---------------------------------------------------------
+    //---------------------------нам не подходит перебор через for без счетчика------------------------------
+    // for (const item of this.items) {
+    //   console.log(item);
+    //   if (item.name === productName) {
+    //     console.log('НАШЛИ', productName);
+    //   }
+    // }
+    //на нужен for of с i чтобы понять что нам удалять
+    //------------------------------------------------------
+    //---------------------------------------------------------
 
-// -------------------------
+    for (let i = 0; i < items.length; i += 1) {
+      // items.length = this.items.length
+      //------------------------------------------------------
+      //-----------------------------------попробовал переменную----------------------
+      // const item = this.items[i];
+      // console.log(item);
+      // if (productName === item.name) {
+      //   console.log('НАШЛИ', productName);
+      // }
+      //------------------------------------------------------
+      //---------------------------------------------------------
+      const { name } = items[i]; // чтобы избавиться от items[i].name
+      console.log(name); // items[i].name
+      if (productName === name) {
+        // items[i].name
+        console.log('НАШЛИ', productName);
+        console.log('индекс:', i); // цифра счетчика (начали с 0, значит будет совпадать с индексом)
+        items.splice(i, 1); // говорим на вот этом индеске (i = 2 в данном случае) удали 1 элемент
+        // this.items.splice
+      }
+    }
+  },
+
+  clear() {
+    this.items = [];
+  },
+  countTotalPrice() {
+    // console.log('total', this.items);
+    let totalPrice = 0;
+    const { items } = this; // this.items
+    for (const { price, quantity } of items) {
+      // вместо item и this.items
+
+      totalPrice += price * quantity; // item.price * item.quantity цену умножаем на количество
+    }
+    // console.log(totalPrice);
+    return totalPrice;
+  },
+  increaseQuantity(productName) {
+    for (const item of this.items) {
+      if (item.name === productName) {
+        item.quantity += 1;
+      }
+    }
+  },
+  decreaseQuantity(productName) {
+    for (const item of this.items) {
+      if (item.name === productName) {
+        item.quantity -= 1;
+      }
+    }
+  },
+};
+
+cart.add({ name: '🍎', price: 50 });
+
+cart.add({ name: '🍇', price: 60 });
+cart.add({ name: '🍓', price: 110 });
+cart.add({ name: '🍓', price: 110 });
+cart.add({ name: '🍋', price: 60 });
+cart.add({ name: '🍋', price: 60 });
+
+// cart.remove('🍇');
+// console.table(cart.getItems());
+
+// cart.clear();
+// console.table(cart.getItems());
+
+cart.increaseQuantity('🍎');
+cart.increaseQuantity('🍎');
+cart.increaseQuantity('🍎');
+cart.increaseQuantity('🍎');
+
+cart.decreaseQuantity('🍋');
+cart.decreaseQuantity('🍋');
+// console.table(cart.getItems());
+
+console.table(cart.getItems());
+console.log('Total: ', cart.countTotalPrice());
