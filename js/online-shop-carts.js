@@ -98,5 +98,28 @@ alcoholShopCart.decreaseQuantity('vine');
 alcoholShopCart.decreaseQuantity('brandy');
 // console.table(alcoholShopCart.getItems());
 
+// ------------------------------------------------------------ скрипт поиска и замены имени в масиве объектов
+
 console.table(alcoholShopCart.getItems());
 console.log('Total: ', alcoholShopCart.countTotalPrice());
+
+const atTheOldToad = {
+  potions: [
+    { name: 'Speed potion', price: 460 },
+    { name: 'Dragon breath', price: 780 },
+    { name: 'Stone skin', price: 520 },
+  ],
+  updatePotionName(oldName, newName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
+      console.log(potions[i]);
+      const { name } = potions;
+      if (potions[i].name === oldName) {
+        potions[i].name = newName;
+      }
+    }
+  },
+};
+
+atTheOldToad.updatePotionName('Dragon breath', 'Polymorth');
+console.log(atTheOldToad.potions);
