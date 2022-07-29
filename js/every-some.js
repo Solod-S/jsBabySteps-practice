@@ -23,3 +23,17 @@ const functToCheckScore = (array, scoreToCheck) => {
 };
 
 console.log(functToCheckScore(students, scoreToCheck));
+
+// some
+// Не изменяет оригинальный массив.
+// Поэлементно перебирает оригинальный массив.
+// Возвращает true если хотя бы один элемент массива удовлетворяет условию.
+// Возвращает false если ни один элемент массив не удовлетворяет условию.
+// Перебор массива прекращается если коллбек возвращает true.
+
+const status = true;
+
+const functSomeonline = (students, status) => {
+  return students.some(student => student.online === status); // проверяем чтобы хотя бы один раз был тру (онлайн)
+};
+console.log('Есть кто онлайн', functSomeonline(students, status));
