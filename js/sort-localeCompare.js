@@ -474,3 +474,32 @@ const sortByName = users => {
 
 // right answer
 // Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+
+//
+//
+//
+//
+//
+//
+// КАСТОМНАЯ СОРТИРОВКА
+//
+//
+//
+//
+//
+//
+
+const customSort = users => {
+  return [...users].sort((firstUser, secondUser) => {
+    const result = firstUser.name[0] > secondUser.name[0];
+    if (result) {
+      return 1;
+    }
+
+    if (!result) {
+      return -1;
+    }
+  });
+};
+
+console.table(customSort(users));
