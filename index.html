@@ -5,9 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      button {
+        margin: 10px;
+        font-size: 16px;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .counter {
+        display: flex;
+        align-items: center;
+      }
+
+      .counter > p {
+        margin: 0;
+        font-size: 48px;
+        font-family: monospace;
+      }
+    </style>
   </head>
   <body>
     <main>
+      <div class="counter">
+        <button class="js-decrement">Уменьшить</button>
+        <p class="js-value">0</p>
+        <button class="js-increment">Увеличить</button>
+      </div>
       <button class="js-bnt">ClickOn</button>
       <button class="js-bnt-sec">OlsoClick</button>
       <button class="js-bnt-thrd">OlsoClick?</button>
@@ -40,6 +68,8 @@
     <!-- <script src="./js/sort-localeCompare.js" type="module"></script> -->
     <!-- <script src="./js/chaining.js" type="module"></script> -->
     <!-- <script src="./js/loadash.js" type="module"></script> -->
-    <script src="./js/this.js" type="module"></script>
+    <!-- <script src="./js/this.js" type="module"></script> -->
+    <!-- <script src="./js/fn-methods-call-apply-bind-counter.js" type="module"></script> -->
+    <script src="./js/counter.js" type="module"></script>
   </body>
 </html>
