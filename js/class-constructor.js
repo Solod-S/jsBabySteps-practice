@@ -279,3 +279,323 @@ console.log(SamsungGalaxyS10);
 // 7. Функция вызывается в контексте созданного объекта
 // 8. В свойство this.__proto__ записывается ссылка на обьект Функция.prototype
 // 9. Ссылка на обьект возвращается в место вызова new Фунукция()
+console.log(
+  '------------------------------------------------------------------------------------------------------------------------------------'
+);
+
+class Storage {
+  constructor(args = []) {
+    this.items = args;
+  }
+  getItems() {
+    return this.items;
+  }
+  addItem(newItem) {
+    this.items.push(newItem);
+  }
+  removeItem(iteToremove) {
+    const { items } = this;
+    for (let i = 0; i < items.length; i += 1) {
+      console.log(items[i]);
+      if (items[i] === iteToremove) {
+        items.splice(i, 1);
+      }
+    }
+  }
+}
+const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem('Droid');
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem('Prolonger');
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+console.log(
+  '--------------------------------------------------------get + set----------------------------------------------------------------------------'
+);
+
+// Change code above this line
+class StringBuilder {
+  constructor(value) {
+    this.value = value;
+  }
+  getValue() {
+    return this.value;
+  }
+  // padStart(newValue) {
+  //   const valueTomassive = this.value.split('');
+  //   valueTomassive.unshift(newValue);
+  //   return (this.value = valueTomassive.join('').toString());
+  // }
+  padStart(newValue) {
+    this.value = newValue.concat(this.value);
+  }
+  // padEnd(newValue) {
+  //   const valueTomassive = this.value.split('');
+  //   valueTomassive.push(newValue);
+  //   return (this.value = valueTomassive.join('').toString());
+  // }
+  padEnd(newValue) {
+    this.value += newValue;
+  }
+  // padBoth(newValue) {
+  //   const valueTomassive = this.value.split('');
+  //   valueTomassive.push(newValue) && valueTomassive.unshift(newValue);
+  //   return (this.value = valueTomassive.join('').toString());
+  // }
+  padBoth(newValue) {
+    this.value += newValue;
+    this.value = newValue.concat(this.value);
+  }
+}
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // "."
+builder.padStart('^');
+console.log(builder.getValue()); // "^."
+builder.padEnd('^');
+console.log(builder.getValue()); // "^.^"
+builder.padBoth('=');
+console.log(builder.getValue()); // "=^.^="
+
+console.log(
+  '-------------------------------------------------------------static key-----------------------------------------------------------------------'
+);
+class CarOne {
+  // Change code below this line
+  static MAX_PRICE = 50000;
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    if (newPrice < Car.MAX_PRICE) {
+      this.#price = newPrice;
+    }
+    console.log(`${newPrice} to hight price`);
+  }
+  // Change code above this line
+}
+
+const audi = new CarOne({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
+console.log(
+  '--------------------------------------------------------------static metods----------------------------------------------------------------------'
+);
+class CarTwo {
+  static #MAX_PRICE = 50000;
+  // Change code below this line
+  static checkPrice(price) {
+    if (price > CarTwo.#MAX_PRICE) {
+      return 'Error! Price exceeds the maximum';
+    }
+    return 'Success! Price is within acceptable limits';
+  }
+  // Change code above this line
+  constructor({ price }) {
+    this.price = price;
+  }
+}
+
+const audi2 = new CarTwo({ price: 36000 });
+const bmw2 = new CarTwo({ price: 64000 });
+
+console.log(CarTwo.checkPrice(audi2.price)); // "Success! Price is within acceptable limits"
+console.log(CarTwo.checkPrice(bmw2.price)); // "Error! Price exceeds the maximum"
+console.log(
+  '--------------------------------------------------------------extends metods----------------------------------------------------------------------'
+);
+//Класс Admin наследует от класса User его конструктор, геттер и сеттер email,
+//а также одноимённое публичное свойство.Важно помнить что приватные свойства и методы класса - родителя не наследуются классом - ребёнком.
+class User {
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+// Change code below this line
+class Admin extends User {
+  static AccessLevel = { BASIC: 'basic', SUPERUSER: 'superuser' };
+}
+
+console.log(
+  '--------------------------------------------------------------super КОНСТРУКТОР ДОЧЕРНЕГО КЛАССА----------------------------------------------------------------------'
+);
+
+class UserTwo {
+  email;
+  accessLevel;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class AdminTwo extends UserTwo {
+  // Change code below this line
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+  //!!!Первым делом в конструкторе дочернего класса необходимо вызвать специальную функцию super(аргументы) - это псевдоним конструктора родительского класса.
+  //!!В противном случае, при попытке обратиться к this в
+  //!!конструкторе дочернего клааса, будет ошибка. При вызове конструктора класса родителя передаём необходимые ему аругменты для инициализации свойств.
+  static AccessLevel = {
+    BASIC: 'basic',
+    SUPERUSER: 'superuser',
+  };
+
+  // Change code above this line
+}
+
+const mango = new AdminTwo({
+  email: 'mango@mail.com',
+  accessLevel: AdminTwo.AccessLevel.SUPERUSER,
+});
+
+console.log(mango.email); // "mango@mail.com"
+console.log(mango.accessLevel); // "superuser"
+
+console.log(
+  '----------------------------------------------------------------МЕТОДЫ ДОЧЕРНЕГО КЛАССА------------------------------------------------------------------'
+);
+
+class UserThrd {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class AdminUserThrd extends UserThrd {
+  // Change code below this line
+
+  constructor({ email, accessLevel, blacklist = [] }) {
+    super(email);
+    this.blacklistedEmails = blacklist;
+    this.accessLevel = accessLevel;
+  }
+  static AccessLevel = {
+    BASIC: 'basic',
+    SUPERUSER: 'superuser',
+  };
+
+  blacklist(email) {
+    this.blacklistedEmails.push(email);
+    return 'email added to blacklist';
+  }
+  isBlacklisted(email) {
+    if (this.blacklistedEmails.includes(email)) {
+      return true;
+    }
+    return false;
+  }
+  // Change code above this line
+}
+
+const mangoThrd = new AdminUserThrd({
+  email: 'mango@mail.com',
+  accessLevel: AdminUserThrd.AccessLevel.SUPERUSER,
+});
+console.log(AdminUserThrd);
+console.log(mangoThrd.blacklist('poly@mail.com')); //
+console.log(mangoThrd.isBlacklisted('mango@mail.com')); // false
+console.log(mangoThrd.isBlacklisted('poly@mail.com')); // true
+
+console.dir(UserThrd);
+console.dir(mangoThrd);
+
+console.log(
+  '----------------------------------------------------------------на финал------------------------------------------------------------------'
+);
+
+class Consoles {
+  static priceLimit = 300;
+  #_brand; // капсулирую (делаю приватным)
+  _instaledGames = [];
+  constructor({ brand, model, price, instaledGame = [] } = {}) {
+    this.#_brand = brand;
+    this._model = model;
+    this._price = price;
+    this._instaledGames = instaledGame;
+  }
+  //__instaledGames _price нельзя чтобы название сетера или гетера совпадало с ключами
+  get model() {
+    console.log(`Your model is ` + this._model);
+    return this._model;
+  }
+
+  set model(newModel) {
+    console.log(this._model + ` is chanched to ` + newModel);
+    this._model = newModel;
+  }
+
+  get price() {
+    console.log(`Your price is ` + this._price);
+    return this._price;
+  }
+
+  set price(newPrice) {
+    if (Consoles.priceLimit > newPrice) {
+      console.log(`sorry the price is too low`);
+    } else {
+      console.log(this._price + ` is chanched to ` + newPrice);
+      this._price = newPrice;
+    }
+  }
+
+  get instaledGames() {
+    console.log(`On this console installed such games like: ` + this._instaledGames);
+    return this._instaledGames;
+  }
+
+  set instalGames(newgame) {
+    console.log(`Your add: ` + newgame);
+    this._instaledGames.push(newgame);
+  }
+}
+
+const PS4 = new Consoles({ brand: 'Playstation', model: 'PS4 Pro', price: 400 });
+
+console.log(PS4);
+PS4.model = 'PS4 Pro ver.2.0';
+PS4.model;
+PS4.price = 500;
+PS4.price;
+PS4.instalGames = 'Fifa';
+PS4.instalGames = 'NHL';
+PS4.instaledGames;
