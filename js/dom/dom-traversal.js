@@ -17,8 +17,8 @@
 
 const navEl = document.querySelector('.site-nav');
 
-// const firstNavItemEl = navEl.querySelector('.site-nav__item'); // [li.site-nav__item, li.site-nav__item, li.site-nav__item]
-const firstNavItemEl = navEl.firstElementChild; // тоже самое [li.site-nav__item, li.site-nav__item, li.site-nav__item]
+// const firstNavItemEl = navEl.querySelectorAll('.site-nav__item'); // [li.site-nav__item]
+const firstNavItemEl = navEl.firstElementChild; // тоже самое [li.site-nav__item]
 console.log(firstNavItemEl);
 console.log(navEl.children); // получаем список всех детей (лишек в улке)
 console.log(`второй ребенок`, navEl.children[1]); // ссылка на второго ребенка

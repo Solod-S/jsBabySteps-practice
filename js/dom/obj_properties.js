@@ -24,8 +24,8 @@ btnEl.addEventListener('click', () => (imageEl.src = 'https://loremflickr.com/32
 /*
  * Атрибуты
  * - get(имя-атрибута)
- * - set(имя-атрибута) // imageEl.remove('src');
- * - remove(имя-атрибута)
+ * - set(имя-атрибута) //
+ * - remove(имя-атрибута) // imageEl.remove('src');
  * - has(имя-атрибута)
  */
 console.log(`getAttribute`, imageEl.getAttribute('src'), imageEl.getAttribute('alt')); // работает с ЛЮБЫМ АТРИБУТОМ КОТОРЫЙ ТЫ МОЖЕШЬ ПРИДУМАТЬ СЕБЕ
