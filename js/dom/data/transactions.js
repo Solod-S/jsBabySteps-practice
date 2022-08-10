@@ -1,3 +1,5 @@
+// import transition from './data/transactions.js';
+
 export default [
   {
     id: '758d5283-358e-4fbb-b222-a17fd04e8916',
