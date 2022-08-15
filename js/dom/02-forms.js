@@ -48,7 +48,7 @@ function onFormSubmit(event) {
     console.log('🚀 name', name);
     console.log('🚀 value', value);
     saveData[name] = value;
-    //  для демонстрации
+    //  собираем дату в объект
   });
   // можно проверить данные (посмотреть их через forEach)
   console.log(formData);
