@@ -1,5 +1,6 @@
 //querySelector если нечего не нашел вернет Null
 //querySelectorAll если нечего не нашел вернет []
+//closest
 
 const navEl = document.querySelector('.site-nav');
 console.log(`navEl`, navEl);
