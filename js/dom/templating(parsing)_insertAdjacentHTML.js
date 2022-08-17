@@ -26,3 +26,5 @@ titleEl.insertAdjacentHTML(`beforebegin`, '<a>перед elem</a>');
 titleEl.insertAdjacentHTML('afterbegin', '<a>внутри elem, перед всеми детьми</a>');
 titleEl.insertAdjacentHTML('beforeend', '<a>внутри elem, после всех детей</a>');
 titleEl.insertAdjacentHTML('afterend', '<a>после elem</a>');
+
+// если то куда мы добавляем пустое место можно использовать innerHTML вместо insertAdjacentHTML (так как нам не нужно обнулять и записывать, а просто записать)
