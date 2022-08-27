@@ -64,3 +64,70 @@ refs.lazyImages.forEach(image => {
 console.log(refs.lazyImages);
 
 // добавляем рюшки
+
+const atTheOldToad = {
+  potions: [
+    { name: 'Speed potion', price: 460 },
+    { name: 'Dragon breath', price: 780 },
+    { name: 'Stone skin', price: 520 },
+  ],
+  // Change code below this line
+  getPotions() {
+    const { potions } = this;
+    return potions;
+  },
+  addPotion(newPotion) {
+    for (let potion of atTheOldToad.potions) {
+      console.log(potion);
+      if (potion.name === newPotion.name) {
+        // console.log('!');
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
+      }
+      // else {
+      //   const newProduct = {
+      //     ...newPotion,
+      //   };
+      //   atTheOldToad.potions.push(newProduct);
+      // }
+    }
+
+    this.potions.push(newPotion);
+  },
+  removePotion(potionName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
+      if (potions[i].name === potionName) {
+        potions.splice(i, 1);
+      }
+    }
+
+    // const potionIndex = this.potions.indexOf(potionName);
+
+    // if (potionIndex === -1) {
+    //   return `Potion ${potionName} is not in inventory!`;
+    // }
+
+    // this.potions.splice(potionIndex, 1);
+  },
+  updatePotionName(oldName, newName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
+      const { name } = potions;
+      if (potions[i].name === oldName) {
+        potions[i].name = newName;
+      }
+    }
+
+    // const potionIndex = this.potions.indexOf(oldName);
+
+    // if (potionIndex === -1) {
+    //   return `Potion ${oldName} is not in inventory!`;
+    // }
+
+    // this.potions.splice(potionIndex, 1, newName);
+  },
+  // Change code above this line
+};
+
+console.log(atTheOldToad.addPotion({ name: 'Power potion', price: 270 }));
+console.log(atTheOldToad.potions);
